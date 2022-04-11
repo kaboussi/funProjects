@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="/home/redone/Projects/Personal/funProjects/tpSolide/database.db" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="structure browser pragmas query" current="0"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="1476"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><current_table name="4,6:maingroups"/><default_encoding codec=""/><browse_table_settings><table schema="main" name="groups" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="108"/><column index="2" value="68"/><column index="3" value="122"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table></browse_table_settings></tab_browse><tab_sql><sql name="SQL 1">INSERT INTO students (first_name, last_name, email, apogee, chosen_group)
+VALUES (&quot;dummyName&quot;, &quot;dummyLastName&quot;, &quot;dummy@email.com&quot;, &quot;1512&quot;, 5)
+</sql><sql name="Edit Trigger student_after_added">DROP TRIGGER &quot;main&quot;.&quot;student_after_added&quot;;
+CREATE TRIGGER student_after_added
+	AFTER INSERT on students
+	FOR EACH ROW
+BEGIN
+	UPDATE groups
+	SET current_capacity = current_capacity + 1
+	WHERE chosen_group = group_number;
+END</sql><current_tab id="0"/></tab_sql></sqlb_project>

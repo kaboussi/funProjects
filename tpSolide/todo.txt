@@ -1,0 +1,2 @@
+* add a unit test for entering data of each student
+* handle the errors when a group over flow
