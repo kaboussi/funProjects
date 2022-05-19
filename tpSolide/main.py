@@ -1,27 +1,25 @@
 import sqlite3
 
 
-
 student_data = {
     "first_name": first_name,
     "last_name": last_name,
     "email": email,
-    "apogee": apogee
+    "apogee": apogee,
 }
 
 
-
-con = sqlite3.connect('database.db')
+con = sqlite3.connect("database.db")
 cur = con.cursor()
 
 
-data = cur.execute('''
+data = cur.execute(
+    """
     SELECT * FROM groups;
-'''
+"""
 )
 
 for item in data:
     print(item)
-    
-con.commit()
 
+con.commit()

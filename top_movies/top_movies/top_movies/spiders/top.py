@@ -2,9 +2,9 @@ import scrapy
 
 
 class TopSpider(scrapy.Spider):
-    name = 'top'
-    allowed_domains = ['www.imdb.com']
-    start_urls = ['https://www.imdb.com/chart/top']
+    name = "top"
+    allowed_domains = ["www.imdb.com"]
+    start_urls = ["https://www.imdb.com/chart/top"]
 
     def parse(self, response):
         movies = response.css("table tbody.lister-list tr")
