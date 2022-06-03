@@ -1,25 +1,24 @@
 import sqlite3
+from typing import Optional
+
+from sqlmodel import Field, SQLModel
 
 
-student_data = {
-    "first_name": first_name,
-    "last_name": last_name,
-    "email": email,
-    "apogee": apogee,
-}
+class Student(SQLModel, table=True):
+    id: Optional[int] = Field(default=None, primary_key=True)
+    name: str
+    last_name: str
+    email: Optional[int] = None
+    apogee: int
 
 
-con = sqlite3.connect("database.db")
-cur = con.cursor()
+engine = create_engine("sqlite:///database.db")
 
 
-data = cur.execute(
-    """
-    SELECT * FROM groups;
-"""
-)
+SQLModel.metadata.create_all(engine)
 
-for item in data:
-    print(item)
-
-con.commit()
+with Session(engine) as session:
+    session.add(hero_1)
+    session.add(hero_2)
+    session.add(hero_3)
+    session.commit()
